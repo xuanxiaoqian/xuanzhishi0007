@@ -9,6 +9,7 @@ import { sidebarConfig } from './config/sidebar'
 
 export default defineConfig({
   ignoreDeadLinks: true,
+  base: '/xuanzhishi0007/',
   title: '轩小浅',
   description: '轩小浅官网',
   head: headConfig,
