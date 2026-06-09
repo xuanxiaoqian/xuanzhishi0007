@@ -1,0 +1,26 @@
+/* 主页 */
+
+
+:root {
+  /* 主页页脚 */
+  --xuan-footer-a-color: #2E2EFF;
+
+  /** 主页标题和描述 **/
+  --vp-c-text-2: #575757;
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(135deg,
+      #eead92 10%,
+      #6018dc 100%);
+
+  /* 图标背景 */
+  --vp-home-hero-image-background-image: linear-gradient(135deg,
+      #81ffef 10%,
+      #f067b4 100%);
+  --vp-home-hero-image-filter: blur(150px);
+}
+
+.dark {
+  --xuan-footer-a-color: #ffffff;
+
+  --vp-c-text-2: #A8A8A8;
+}

@@ -1,0 +1,158 @@
+/* 文章样式 */
+
+/* 针对有侧边栏的页面，解除宽度限制 */
+.VPDoc.has-aside .content-container {
+  max-width: 1440px !important;
+  /* 如果你觉得完全没有限制太宽，也可以设置一个你喜欢的大宽度，例如 1000px */
+  /* max-width: 1000px !important; */
+}
+
+
+:root {
+  /* 内容两边导航栏比例 */
+  --vp-layout-max-width: 95%;
+  /* 内容比例 */
+  --vp-content-max-width: 80%;
+
+
+  /* 标题字体颜色 */
+  --dora-text-indigo: #2f4eb3;
+
+  /* 引用语法字体颜色 */
+  --xuan-blockquote-font-color: #777;
+
+  /* 标题下划线 */
+  --dora-border-indigo: #3e63dd;
+
+  /* 列表数字字体颜色 */
+  --xuan-li-font-color: #3e63dd;
+}
+
+.dark {
+  --dora-text-indigo: #99a2ff;
+
+  --xuan-blockquote-font-color: #d0d0d0;
+
+  --dora-border-indigo: #99a2ff;
+
+  --xuan-li-font-color: #f9b44e;
+}
+
+/* 标题样式 */
+.vp-doc h1 {
+  padding-bottom: 0.5rem;
+  width: 100%;
+  text-align: center;
+}
+
+/* 标题样式 */
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.vp-doc h4,
+.vp-doc h5,
+.vp-doc h6 {
+  color: var(--dora-text-indigo);
+  letter-spacing: 0.1em;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+/* 修改 引用语法 样式*/
+.vp-doc blockquote {
+  border-left: 4px solid #42b983;
+  padding: 10px 15px;
+  color: var(--xuan-blockquote-font-color);
+  background-color: rgba(66, 185, 131, 0.1);
+}
+
+/* h2标签有下划线 */
+.vp-doc h2 {
+  margin-top: 10px;
+  border-bottom: 3px solid var(--dora-border-indigo);
+  width: fit-content;
+  padding-bottom: 4px;
+  border-top: 0px solid var(--dora-border-indigo);
+}
+
+/* 超链接 */
+.vp-doc a {
+  text-decoration: none;
+  font-weight: 500;
+  transition: color .25s, opacity .25s;
+}
+
+.vp-doc a:hover {
+  text-decoration: underline dotted;
+  color: #5c73e7;
+  cursor: pointer;
+}
+
+/* 侧边导航步骤条 */
+.VPDocAsideOutline .outline-marker {
+  width: 0.25rem
+}
+
+/* 侧边导航选中文本 */
+.VPDocAsideOutline .content .root li .active {
+  color: var(--dora-text-indigo);
+}
+
+/* 图片样式 */
+.vp-doc img {
+  cursor: pointer;
+  transition: transform 0.3s ease-out;
+  /* 添加过渡效果 */
+  margin-bottom: 10px;
+  margin-top: 10px;
+  box-shadow: 0px 0px 6px rgba(0, 21, 41, 0.35);
+
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  /* 根据实际图片比例调整 */
+  object-fit: cover;
+}
+
+/* 图片放大 20% */
+.vp-doc img:hover {
+  transform: scale(1.02);
+}
+
+/*  ============ 解决列表数字1靠左的问题 ============ */
+/* 1. 隐藏默认的数字 */
+.vp-doc ol {
+  list-style: none !important;
+  counter-reset: my-counter;
+  /* 创建计数器 */
+  padding-left: 0 !important;
+  /* 清空缩进 */
+}
+
+/* 2. 完美的自定义数字 */
+.vp-doc ol li {
+  counter-increment: my-counter;
+  position: relative;
+  padding-left: 1.5em;
+  /* 给数字留出固定的左侧空间 */
+}
+
+/* 3. 让数字绝对定位，且左对齐 */
+.vp-doc ol li::before {
+  color: var(--xuan-li-font-color);
+  /* 金色，暖色调 */
+  content: counter(my-counter) ".";
+  position: absolute;
+  left: 0;
+  top: 0;
+  text-align: left;
+  /* 强制左对齐，1 紧贴最左边 */
+  width: 1.2em;
+}
+
+/* **强调** */
+.vp-doc strong {
+  color: #3dd68c;
+  /* 青绿色 */
+  font-weight: 700;
+}
