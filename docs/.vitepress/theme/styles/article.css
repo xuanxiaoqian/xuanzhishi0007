@@ -77,15 +77,20 @@
 
 /* 超链接 */
 .vp-doc a {
-  text-decoration: none;
-  font-weight: 500;
-  transition: color .25s, opacity .25s;
+  background: linear-gradient(135deg, #6ee7b7, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  transition: all 0.3s ease;
 }
 
 .vp-doc a:hover {
-  text-decoration: underline dotted;
-  color: #5c73e7;
-  cursor: pointer;
+  background: linear-gradient(135deg, #34d399, #2563eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  opacity: 0.85;
 }
 
 /* 侧边导航步骤条 */
