@@ -11,6 +11,10 @@ export const sidebarConfig: DefaultTheme.Sidebar = {
         {
           text: "我的",
           link: "/pages/test/2-我的"
+        },
+        {
+          text: "文章",
+          link: "/pages/test/3-文章"
         }
       ]
     }

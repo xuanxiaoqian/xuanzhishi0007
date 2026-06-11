@@ -16,26 +16,31 @@
 
 
   /* 标题字体颜色 */
-  --dora-text-indigo: #2f4eb3;
+  --dora-text-indigo: #111111;
 
   /* 引用语法字体颜色 */
-  --xuan-blockquote-font-color: #777;
+  --xuan-blockquote-font-color: #3F3F46;
 
   /* 标题下划线 */
   --dora-border-indigo: #3e63dd;
 
   /* 列表数字字体颜色 */
-  --xuan-li-font-color: #3e63dd;
+  --xuan-li-font-color: #71717A;
+
+  /* strong字体颜色 */
+  --xuan-strong-font-color: #b45309;
 }
 
 .dark {
-  --dora-text-indigo: #99a2ff;
+  --dora-text-indigo: #F5F5F7;
 
-  --xuan-blockquote-font-color: #d0d0d0;
+  --xuan-blockquote-font-color: #E4E4E7;
 
   --dora-border-indigo: #99a2ff;
 
-  --xuan-li-font-color: #f9b44e;
+  --xuan-li-font-color: #F4F4F5;
+
+  --xuan-strong-font-color: #fcd535;
 }
 
 /* 标题样式 */
@@ -69,28 +74,61 @@
 /* h2标签有下划线 */
 .vp-doc h2 {
   margin-top: 10px;
-  border-bottom: 3px solid var(--dora-border-indigo);
   width: fit-content;
-  padding-bottom: 4px;
+  padding-bottom: 6px;
   border-top: 0px solid var(--dora-border-indigo);
+
+  /* 依然保留单边边框，但给它增加不透明度 */
+  border-bottom: 3px solid color-mix(in srgb, var(--dora-border-indigo) 35%, transparent);
+
+  /* 核心魔法：通过给底层加一个超大半径的圆角，硬生生把 3px 的直线“掰弯”成一抹微弱的弧线 */
+  border-bottom-left-radius: 12px !important;
+  border-bottom-right-radius: 12px !important;
 }
 
 /* 超链接 */
 .vp-doc a {
-  background: linear-gradient(135deg, #6ee7b7, #3b82f6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #2563eb !important;
+  /* 默认使用高级科技蓝，不刺眼 */
+  text-decoration: none !important;
+  border-bottom: 1px solid rgba(37, 99, 235, 0.2);
+  /* 淡淡的同色系下划线 */
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.dark .vp-doc a {
+  color: #60a5fa !important;
+  /* 暗黑模式下稍微提亮蓝色的纯度 */
+  border-bottom: 1px solid rgba(96, 165, 250, 0.2);
+}
+
+/* 悬停时触发惊艳的文字渐变 */
+.vp-doc a {
+  color: #111111 !important;
+  /* 明亮模式下用曜黑 */
+  text-decoration: none !important;
   position: relative;
-  transition: all 0.3s ease;
+  font-weight: 500;
+  padding-bottom: 2px;
+  /* 用背景渐变模拟一条完美的下划线 */
+  background-image: linear-gradient(90deg, #6ee7b7, #3b82f6);
+  background-size: 100% 1px;
+  /* 默认 1px 极细线 */
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  transition: all 0.25s ease;
+}
+
+/* 暗黑模式下文字转为钛白，下划线保持渐变 */
+.dark .vp-doc a {
+  color: #f5f5f7 !important;
 }
 
 .vp-doc a:hover {
-  background: linear-gradient(135deg, #34d399, #2563eb);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  opacity: 0.85;
+  background-size: 100% 2px;
+  /* 悬停时下划线轻轻加粗，极具呼吸感 */
+  opacity: 0.9;
 }
 
 /* 侧边导航步骤条 */
@@ -153,11 +191,4 @@
   text-align: left;
   /* 强制左对齐，1 紧贴最左边 */
   width: 1.2em;
-}
-
-/* **强调** */
-.vp-doc strong {
-  color: #3dd68c;
-  /* 青绿色 */
-  font-weight: 700;
 }
